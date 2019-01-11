@@ -1,8 +1,7 @@
 numpy
-tensorflow
 Keras
 regex
 keras-embed-sim==0.3.0
-keras-pos-embd==0.7.0
-keras-layer-normalization==0.9.0
-keras-transformer==0.18.0
+keras-pos-embd==0.8.0
+keras-layer-normalization==0.11.0
+keras-transformer==0.19.0
