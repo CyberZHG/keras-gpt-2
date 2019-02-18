@@ -1,0 +1,5 @@
+numpy
+tensorflow
+Keras
+keras-pos-embd==0.7.0
+keras-transformer==0.17.0
