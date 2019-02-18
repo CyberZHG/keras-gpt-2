@@ -3,7 +3,7 @@ import codecs
 import regex as re
 
 
-__all__ = ['BytePairEncoding', 'get_bpe']
+__all__ = ['BytePairEncoding', 'get_bpe_from_file']
 
 
 class BytePairEncoding(object):
@@ -77,7 +77,7 @@ class BytePairEncoding(object):
         return bytearray([self.byte_decoder[byte] for byte in text]).decode('utf-8', errors='replace')
 
 
-def get_bpe(encoder_path, vocab_path):
+def get_bpe_from_file(encoder_path, vocab_path):
     """Get initialized BPE.
 
     :param encoder_path: Path to 'encoder.json'.

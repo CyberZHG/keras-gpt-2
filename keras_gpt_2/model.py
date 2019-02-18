@@ -86,7 +86,7 @@ def get_model(n_vocab,
     :param n_layer: Number of transformer blocks.
     :return: The model.
     """
-    input_layer = keras.layers.Input(shape=(n_ctx,), name='Input')
+    input_layer = keras.layers.Input(shape=(None,), name='Input')
 
     embed_token, embeddings = EmbeddingRet(
         input_dim=n_vocab,
