@@ -1,6 +1,6 @@
 import os
 from unittest import TestCase
-from keras_gpt_2 import get_bpe_from_file
+from keras_gpt_2 import get_bpe_from_files
 
 
 class TestBPE(TestCase):
@@ -10,7 +10,7 @@ class TestBPE(TestCase):
         toy_checkpoint_path = os.path.join(current_path, 'toy_checkpoint')
         encoder_path = os.path.join(toy_checkpoint_path, 'encoder.json')
         vocab_path = os.path.join(toy_checkpoint_path, 'vocab.bpe')
-        bpe = get_bpe_from_file(encoder_path, vocab_path)
+        bpe = get_bpe_from_files(encoder_path, vocab_path)
         text = 'Power, give me more power!'
         indices = bpe.encode(text)
         self.assertEqual([13434, 11, 1577, 502, 517, 1176, 0], indices)

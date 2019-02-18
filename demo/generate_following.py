@@ -1,24 +1,14 @@
-# Keras GPT-2
-
-[![Travis](https://travis-ci.org/CyberZHG/keras-gpt-2.svg)](https://travis-ci.org/CyberZHG/keras-gpt-2)
-[![Coverage](https://coveralls.io/repos/github/CyberZHG/keras-gpt-2/badge.svg?branch=master)](https://coveralls.io/github/CyberZHG/keras-gpt-2)
-
-"Power, give me more power."
-
-## Install
-
-```bash
-pip install keras-gpt-2
-```
-
-## Demo
-
-```python3
 import os
+import sys
 from keras_gpt_2 import load_trained_model_from_checkpoint, get_bpe_from_files, generate
 
 
-model_folder = 'xxx/yyy/117M'
+if len(sys.argv) != 2:
+    print('python3 demo.py MODEL_FOLDER')
+    sys.exit(-1)
+
+
+model_folder = sys.argv[1]
 config_path = os.path.join(model_folder, 'hparams.json')
 checkpoint_path = os.path.join(model_folder, 'model.ckpt')
 encoder_path = os.path.join(model_folder, 'encoder.json')
@@ -30,9 +20,8 @@ model = load_trained_model_from_checkpoint(config_path, checkpoint_path)
 print('Load BPE from files...')
 bpe = get_bpe_from_files(encoder_path, vocab_path)
 print('Generate text...')
-output = generate(model, bpe, ['From the day forth, my arm'], length=20, top_k=1)
+output = generate(model, bpe, ['From the day forth, my arm'], length=20, top_k=40)
 
-# If you are using the 117M model and top_k equals to 1, then the result will be:
+# If you are using the 117M model and top_k equals to 1, then the result would be:
 # "From the day forth, my arm was broken, and I was in a state of pain. I was in a state of pain,"
 print(output[0])
-```
