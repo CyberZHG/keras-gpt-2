@@ -1,5 +1,7 @@
 numpy
 tensorflow
 Keras
+keras-embed-sim==0.3.0
 keras-pos-embd==0.7.0
-keras-transformer==0.17.0
+keras-layer-normalization=0.9.0
+keras-transformer==0.18.0
