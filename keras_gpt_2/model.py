@@ -91,7 +91,7 @@ def get_model(n_vocab,
     embed_token, embeddings = EmbeddingRet(
         input_dim=n_vocab,
         output_dim=n_embd,
-        mask_zero=True,
+        mask_zero=False,
         name='Embed-Token',
     )(input_layer)
     embed_token_pos = PositionEmbedding(

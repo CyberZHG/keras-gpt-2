@@ -18,7 +18,7 @@ def load_trained_model_from_checkpoint(config_path,
     :return: The model.
     """
     with open(config_path, 'r') as reader:
-        config = json.loads(reader.read())
+        config = json.load(reader)
     if seq_len is None:
         n_ctx = config['n_ctx']
     else:
