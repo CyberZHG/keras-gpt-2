@@ -1,0 +1,7 @@
+{
+  "n_vocab": 356,
+  "n_ctx": 20,
+  "n_embd": 15,
+  "n_head": 5,
+  "n_layer": 3
+}
