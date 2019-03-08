@@ -76,7 +76,9 @@ def get_model(n_vocab,
               n_ctx=1024,
               n_embd=768,
               n_head=12,
-              n_layer=12):
+              n_layer=12,
+              fixed_input_shape=False # neededforTPU training 
+             ):
     """Get basic GPT-2 model.
 
     :param n_vocab: Number of vocabulary tokens.
@@ -86,7 +88,11 @@ def get_model(n_vocab,
     :param n_layer: Number of transformer blocks.
     :return: The model.
     """
-    input_layer = keras.layers.Input(shape=(None,), name='Input')
+    if fixed_input_shape:
+        input_layer_shape=(n_ctx,)
+    else:
+        input_layer_shape=(None,)
+    input_layer = keras.layers.Input(shape=input_layer_shape, name='Input')
 
     embed_token, embeddings = EmbeddingRet(
         input_dim=n_vocab,
