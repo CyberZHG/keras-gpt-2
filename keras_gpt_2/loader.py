@@ -9,7 +9,7 @@ __all__ = ['load_trained_model_from_checkpoint']
 def load_trained_model_from_checkpoint(config_path,
                                        checkpoint_path,
                                        seq_len=None,
-                                       seq_len_fixed=False
+                                       fixed_input_shape=False # neededforTPU training 
                                       ):
     """Load trained official model from checkpoint.
 
@@ -32,7 +32,7 @@ def load_trained_model_from_checkpoint(config_path,
         n_embd=n_embd,
         n_head=config['n_head'],
         n_layer=config['n_layer'],
-        seq_len_fixed=seq_len_fixed,
+        fixed_input_shape=fixed_input_shape,
     )
     model.get_layer(name='Embed-Token').set_weights([
         tf.train.load_variable(checkpoint_path, 'model/wte:0'),
