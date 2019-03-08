@@ -9,14 +9,14 @@ __all__ = ['load_trained_model_from_checkpoint']
 def load_trained_model_from_checkpoint(config_path,
                                        checkpoint_path,
                                        seq_len=None,
-                                       fixed_input_shape=False # neededforTPU training 
-                                      ):
+                                       fixed_input_shape=False):
     """Load trained official model from checkpoint.
 
     :param config_path: The path to the JSON configuration file. (hparams.json)
     :param checkpoint_path: The path to the checkpoint files, should end with '.ckpt'.
     :param seq_len: If it is not None and it is shorter than the value in the config file, the weights in
                     position embeddings will be sliced to fit the new length.
+    :param fixed_input_shape: Whether the length of input is fixed. (Needed for TPU training)
     :return: The model.
     """
     with open(config_path, 'r') as reader:
