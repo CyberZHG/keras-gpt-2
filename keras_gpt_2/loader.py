@@ -9,7 +9,7 @@ __all__ = ['load_trained_model_from_checkpoint']
 def load_trained_model_from_checkpoint(config_path,
                                        checkpoint_path,
                                        seq_len=None,
-                                        batch=batch,
+                                       batch_size=None,
                                        fixed_input_shape=False):
     """Load trained official model from checkpoint.
 
@@ -17,6 +17,7 @@ def load_trained_model_from_checkpoint(config_path,
     :param checkpoint_path: The path to the checkpoint files, should end with '.ckpt'.
     :param seq_len: If it is not None and it is shorter than the value in the config file, the weights in
                     position embeddings will be sliced to fit the new length.
+    :param batch_size: Batch size of the model.
     :param fixed_input_shape: Whether the length of input is fixed. (Needed for TPU training)
     :return: The model.
     """
@@ -33,7 +34,7 @@ def load_trained_model_from_checkpoint(config_path,
         n_embd=n_embd,
         n_head=config['n_head'],
         n_layer=config['n_layer'],
-        batch=batch,
+        batch_size=batch_size,
         fixed_input_shape=fixed_input_shape,
     )
     model.get_layer(name='Embed-Token').set_weights([
