@@ -9,6 +9,7 @@ __all__ = ['load_trained_model_from_checkpoint']
 def load_trained_model_from_checkpoint(config_path,
                                        checkpoint_path,
                                        seq_len=None,
+                                        batch=batch,
                                        fixed_input_shape=False):
     """Load trained official model from checkpoint.
 
@@ -32,6 +33,7 @@ def load_trained_model_from_checkpoint(config_path,
         n_embd=n_embd,
         n_head=config['n_head'],
         n_layer=config['n_layer'],
+        batch=batch,
         fixed_input_shape=fixed_input_shape,
     )
     model.get_layer(name='Embed-Token').set_weights([
