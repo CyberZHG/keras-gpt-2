@@ -77,6 +77,7 @@ def get_model(n_vocab,
               n_embd=768,
               n_head=12,
               n_layer=12,
+              batch=None,
               fixed_input_shape=False):
     """Get basic GPT-2 model.
 
@@ -89,10 +90,10 @@ def get_model(n_vocab,
     :return: The model.
     """
     if fixed_input_shape:
-        input_layer_shape = (n_ctx,)
+        input_layer_shape = (batch,n_ctx,)
     else:
-        input_layer_shape = (None,)
-    input_layer = keras.layers.Input(shape=input_layer_shape, name='Input')
+        input_layer_shape = (batch,None)
+    input_layer = keras.layers.Input(batch_shape=input_layer_shape, name='Input')
 
     embed_token, embeddings = EmbeddingRet(
         input_dim=n_vocab,
