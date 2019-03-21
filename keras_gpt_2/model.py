@@ -90,9 +90,9 @@ def get_model(n_vocab,
     :return: The model.
     """
     if fixed_input_shape:
-        input_layer_shape = (batch,n_ctx)
+        input_layer_shape = (batch, n_ctx )
     else:
-        input_layer_shape = (batch,None)
+        input_layer_shape = (batch, None )
     input_layer = keras.layers.Input(batch_shape=input_layer_shape, name='Input')
 
     embed_token, embeddings = EmbeddingRet(
