@@ -77,7 +77,7 @@ def get_model(n_vocab,
               n_embd=768,
               n_head=12,
               n_layer=12,
-              batch=None,
+              batch_size=None,
               fixed_input_shape=False):
     """Get basic GPT-2 model.
 
@@ -86,13 +86,14 @@ def get_model(n_vocab,
     :param n_embd: The dimension of embeddings.
     :param n_head: Number of heads in transformer.
     :param n_layer: Number of transformer blocks.
+    :param batch_size: Batch size of the model.
     :param fixed_input_shape: Whether the length of input is fixed. (Needed for TPU training)
     :return: The model.
     """
     if fixed_input_shape:
-        input_layer_shape = (batch, n_ctx)
+        input_layer_shape = (batch_size, n_ctx)
     else:
-        input_layer_shape = (batch, None)
+        input_layer_shape = (batch_size, None)
     input_layer = keras.layers.Input(batch_shape=input_layer_shape, name='Input')
 
     embed_token, embeddings = EmbeddingRet(
