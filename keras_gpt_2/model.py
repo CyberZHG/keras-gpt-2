@@ -94,7 +94,10 @@ def get_model(n_vocab,
         input_layer_shape = (batch_size, n_ctx)
     else:
         input_layer_shape = (batch_size, None)
-    input_layer = keras.layers.Input(batch_shape=input_layer_shape, name='Input')
+    input_layer = keras.layers.Input(
+        batch_shape=input_layer_shape,
+        name='Input',
+    )
 
     embed_token, embeddings = EmbeddingRet(
         input_dim=n_vocab,
