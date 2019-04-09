@@ -5,7 +5,8 @@ def generate(model,
              bpe,
              texts,
              length=100,
-             top_k=1):
+             top_k=1,
+             temperature=1.0):
     """Generate text after the given contexts.
 
     :param model: The trained model.
@@ -13,6 +14,7 @@ def generate(model,
     :param texts: A list of texts.
     :param length: The length of following texts to be generated.
     :param top_k: Choose the next token from top K.
+    :param temperature: Randomness in boltzmann distribution.
     :return: A list of generated texts.
     """
     batch_size = len(texts)
@@ -27,8 +29,10 @@ def generate(model,
             probs.sort(reverse=True)
             probs = probs[:top_k]
             indices, probs = list(map(lambda x: x[1], probs)), list(map(lambda x: x[0], probs))
-            scale = 1.0 / sum(probs)
-            probs = [prob * scale for prob in probs]
+            probs = np.array(probs) / temperature
+            probs = probs - np.max(probs)
+            probs = np.exp(probs)
+            probs = probs / np.sum(probs)
             next_token = np.random.choice(indices, p=probs)
             input_data[index].append(0)
             input_data[index][text_lens[index] + shift] = next_token
