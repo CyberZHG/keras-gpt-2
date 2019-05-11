@@ -7,6 +7,11 @@ import regex as re
 
 __all__ = ['BytePairEncoding', 'get_bpe_from_files']
 
+try:
+    unichr
+except NameError:
+    unichr = chr
+
 
 class BytePairEncoding(object):
 
@@ -31,11 +36,11 @@ class BytePairEncoding(object):
         codes = list(range(ord("!"), ord("~") + 1)) +\
                 list(range(ord("¡"), ord("¬") + 1)) +\
                 list(range(ord("®"), ord("ÿ") + 1))
-        byte_encoder = {code: chr(code) for code in codes}
+        byte_encoder = {code: unichr(code) for code in codes}
         shift = 0
         for code in range(2 ** 8):
             if code not in byte_encoder:
-                byte_encoder[code] = chr(2 ** 8 + shift)
+                byte_encoder[code] = unichr(2 ** 8 + shift)
                 shift += 1
         return byte_encoder
 
