@@ -6,15 +6,15 @@
 ![Downloads](https://img.shields.io/pypi/dm/keras-gpt-2.svg)
 ![License](https://img.shields.io/pypi/l/keras-gpt-2.svg)
 
-Load pretrained weights and predict with [GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf).
+[GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)预训练权重加载和预测。
 
-## Install
+## 安装
 
 ```bash
 pip install keras-gpt-2
 ```
 
-## Demo
+## 示例
 
 ```python3
 import os
@@ -28,14 +28,14 @@ encoder_path = os.path.join(model_folder, 'encoder.json')
 vocab_path = os.path.join(model_folder, 'vocab.bpe')
 
 
-print('Load model from checkpoint...')
+print('从预训练checkpoint加载模型……')
 model = load_trained_model_from_checkpoint(config_path, checkpoint_path)
-print('Load BPE from files...')
+print('读取BPE词典……')
 bpe = get_bpe_from_files(encoder_path, vocab_path)
-print('Generate text...')
+print('生成文本……')
 output = generate(model, bpe, ['From the day forth, my arm'], length=20, top_k=1)
 
-# If you are using the 117M model and top_k equals to 1, then the result will be:
+# 在使用117M模型且top_k设置为1的情况下，输出为：
 # "From the day forth, my arm was broken, and I was in a state of pain. I was in a state of pain,"
 print(output[0])
 ```
