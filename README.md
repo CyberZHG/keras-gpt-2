@@ -6,6 +6,13 @@
 ![Downloads](https://img.shields.io/pypi/dm/keras-gpt-2.svg)
 ![License](https://img.shields.io/pypi/l/keras-gpt-2.svg)
 
+![](https://img.shields.io/badge/keras-tensorflow-blue.svg)
+![](https://img.shields.io/badge/keras-theano-blue.svg)
+![](https://img.shields.io/badge/keras-tf.keras-blue.svg)
+![](https://img.shields.io/badge/keras-tf.keras/eager-blue.svg)
+
+\[[中文](https://github.com/CyberZHG/keras-gpt-2/blob/master/README.zh-CN.md)|[English](https://github.com/CyberZHG/keras-gpt-2/blob/master/README.md)\]
+
 Load pretrained weights and predict with [GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf).
 
 ## Install
@@ -16,7 +23,7 @@ pip install keras-gpt-2
 
 ## Demo
 
-```python3
+```python
 import os
 from keras_gpt_2 import load_trained_model_from_checkpoint, get_bpe_from_files, generate
 
