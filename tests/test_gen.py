@@ -4,6 +4,12 @@ import numpy as np
 from keras_gpt_2 import get_model, BytePairEncoding, generate
 
 
+try:
+    chr = unichr
+except Exception as e:
+    '''No need to use `unichr` in Python 3'''
+
+
 class TestGen(TestCase):
 
     def test_train_and_gen(self):
