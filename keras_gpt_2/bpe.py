@@ -76,7 +76,8 @@ class BytePairEncoding(object):
     def encode(self, text):
         indices = []
         for token in re.findall(self.token_pattern, text):
-            chars = ''.join(self.byte_encoder[code] for code in token.encode('utf-8'))
+            token = bytearray(token.encode('utf-8'))
+            chars = ''.join(self.byte_encoder[code] for code in token)
             indices += [self.token_dict[token] for token in self.get_bpe(chars)]
         return indices
 
