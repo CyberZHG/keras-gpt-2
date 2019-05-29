@@ -2,4 +2,4 @@ numpy
 Keras
 regex
 keras-pos-embd==0.10.0
-keras-transformer==0.23.0
+keras-transformer==0.25.0

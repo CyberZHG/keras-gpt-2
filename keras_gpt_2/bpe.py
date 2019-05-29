@@ -8,6 +8,12 @@ import regex as re
 __all__ = ['BytePairEncoding', 'get_bpe_from_files']
 
 
+try:
+    chr = unichr
+except Exception as e:
+    '''No need to use `unichr` in Python 3'''
+
+
 class BytePairEncoding(object):
 
     def __init__(self,
