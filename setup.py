@@ -12,7 +12,7 @@ with codecs.open('requirements.txt', 'r', 'utf8') as reader:
 
 setup(
     name='keras-gpt-2',
-    version='0.10.0',
+    version='0.11.0',
     packages=find_packages(),
     url='https://github.com/CyberZHG/keras-gpt-2',
     license='MIT',
