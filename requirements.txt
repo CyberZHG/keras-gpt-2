@@ -1,5 +1,5 @@
 numpy
 Keras
 regex
-keras-pos-embd==0.10.0
-keras-transformer==0.27.0
+keras-pos-embd
+keras-transformer
