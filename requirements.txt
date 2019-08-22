@@ -1,4 +1,4 @@
 numpy
 Keras
 regex
-keras-transformer>=0.28.0
+keras-transformer>=0.30.0
