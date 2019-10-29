@@ -7,10 +7,7 @@
 ![License](https://img.shields.io/pypi/l/keras-gpt-2.svg)
 
 ![](https://img.shields.io/badge/keras-tensorflow-blue.svg)
-![](https://img.shields.io/badge/keras-theano-blue.svg)
 ![](https://img.shields.io/badge/keras-tf.keras-blue.svg)
-![](https://img.shields.io/badge/keras-tf.keras/eager-blue.svg)
-![](https://img.shields.io/badge/keras-tf.keras/2.0_beta-blue.svg)
 
 \[[中文](https://github.com/CyberZHG/keras-gpt-2/blob/master/README.zh-CN.md)|[English](https://github.com/CyberZHG/keras-gpt-2/blob/master/README.md)\]
 
