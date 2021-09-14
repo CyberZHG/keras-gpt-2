@@ -38,7 +38,7 @@ def generate(model,
                 -np.sort(-probs)
                 while np.sum(probs) > top_p:
                     probs = probs[:-1]
-                indices, _ = list(map(lambda x: x[1], probs)), list(map(lambda x: x[0], probs))
+                indices, _ = list(map(lambda x: x[1], probs.tolist)), list(map(lambda x: x[0], probs.tolist))
             next_token = np.random.choice(indices, p=probs)
             input_data[index].append(0)
             input_data[index][text_lens[index] + shift] = next_token
