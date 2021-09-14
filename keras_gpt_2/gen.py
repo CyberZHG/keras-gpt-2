@@ -39,6 +39,7 @@ def generate(model,
                 while np.sum(probs) > top_p:
                     probs = probs[:-1]
                     indices = indices[:-1]
+                probs /= probs.sum()
             next_token = np.random.choice(indices, p=probs)
             input_data[index].append(0)
             input_data[index][text_lens[index] + shift] = next_token
