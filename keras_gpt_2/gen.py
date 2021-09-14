@@ -36,7 +36,7 @@ def generate(model,
             probs = probs / np.sum(probs)
             if top_p > 0.0:
                 -np.sort(-probs)
-                while np.cumsum(probs) > top_p:
+                while np.sum(probs) > top_p:
                     probs = probs[:-1]
                 indices, _ = list(map(lambda x: x[1], probs)), list(map(lambda x: x[0], probs))
             next_token = np.random.choice(indices, p=probs)
