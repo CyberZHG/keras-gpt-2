@@ -6,6 +6,7 @@ def generate(model,
              texts,
              length=100,
              top_k=1,
+             top_p=0.9,
              temperature=1.0):
     """Generate text after the given contexts.
 
@@ -33,6 +34,11 @@ def generate(model,
             probs = probs - np.max(probs)
             probs = np.exp(probs)
             probs = probs / np.sum(probs)
+            if top_p > 0.0:
+                -np.sort(-probs)
+                while np.cumsum(probs) > top_p:
+                    probs = probs[:-1]
+                indices, _ = list(map(lambda x: x[1], probs)), list(map(lambda x: x[0], probs))
             next_token = np.random.choice(indices, p=probs)
             input_data[index].append(0)
             input_data[index][text_lens[index] + shift] = next_token
