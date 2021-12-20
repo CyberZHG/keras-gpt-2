@@ -1,4 +1,4 @@
-from .backend import keras
+from .backend import keras, tf
 from keras_embed_sim import EmbeddingRet, EmbeddingSim
 from keras_pos_embd import PositionEmbedding
 from keras_layer_normalization import LayerNormalization
@@ -134,7 +134,7 @@ def get_model(n_vocab,
 
     model = keras.models.Model(inputs=input_layer, outputs=output_layer)
     model.compile(
-        optimizer=keras.optimizers.Adam(),
+        optimizer=tf.keras.optimizers.Adam(),
         loss=keras.losses.sparse_categorical_crossentropy,
     )
     return model
