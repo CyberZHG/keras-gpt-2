@@ -1,8 +1,10 @@
 import os
 import tempfile
 from unittest import TestCase
+
 import numpy as np
-from keras_gpt_2.backend import keras
+from tensorflow import keras
+
 from keras_gpt_2 import get_model, get_custom_objects
 
 

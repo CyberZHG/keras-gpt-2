@@ -1,4 +1,2 @@
-numpy
-Keras
 regex
-keras-transformer>=0.38.0
+keras-transformer==0.40.0
